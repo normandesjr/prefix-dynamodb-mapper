@@ -9,8 +9,26 @@
     <artifactId>prefix-dynamodb-mapper</artifactId>
     <version>${revision}</version>
 
+    <name>prefix-dynamodb-mapper</name>
+    <description>Decorator for DynamoDBMapper that will help you add prefix to your attributes</description>
+    <url>https://github.com/normandesjr/prefix-dynamodb-mapper</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Normandes Junior</name>
+            <email>normandesjr@gmail.com</email>
+        </developer>
+    </developers>
+
     <properties>
-        <revision>0.0.1</revision>
+        <revision>0.0.1-SNAPSHOT</revision>
 
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -24,6 +42,7 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.7</nexus-staging-maven-plugin.version>
+        <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
     </properties>
 
     <dependencies>
@@ -72,6 +91,20 @@
                         <id>attach-sources</id>
                         <goals>
                             <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
