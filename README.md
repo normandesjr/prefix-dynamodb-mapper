@@ -46,6 +46,20 @@ If you check at database you'll see the value "PRODUCT_AAA111" as the value of "
 
 ### Release
 
+If your version is a release version (does not end in -SNAPSHOT):
+
 ````
-./mvnw -Drevision=0.0.1.RELEASE deploy scm:tag
+mvn clean deploy
+````
+
+Set the property autoReleaseAfterClose to false to be able manually inspect the staging repository and trigger a release of the staging repository later with:
+
+````
+mvn nexus-staging:release
+````
+
+If you find something went wrong you can drop the staging repository with:
+
+````
+mvn nexus-staging:drop
 ````
