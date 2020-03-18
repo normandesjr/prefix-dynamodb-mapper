@@ -21,7 +21,7 @@ import static java.util.Objects.nonNull;
  * <p>
  * Create a @Bean like this:
  * <pre class="brush: java">
- * @Bean
+ * &#064;Bean
  * public PrefixKeyDynamoDBMapper dynamoDBMapper(AmazonDynamoDB amazonDynamoDB) {
  *     return new PrefixKeyDynamoDBMapper(amazonDynamoDB, new DynamoDBMapper(amazonDynamoDB));
  * }
