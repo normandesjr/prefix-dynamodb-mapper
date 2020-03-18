@@ -42,15 +42,16 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito-core.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.pivovarit</groupId>
             <artifactId>throwing-function</artifactId>
             <version>${throwing-function.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito-core.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
