@@ -18,15 +18,16 @@ import static java.util.Objects.nonNull;
  * <p>
  * Decorator for DynamoDBMapper.
  * </p>
- * <p>
+ *
  * Create a @Bean like this:
+ *
  * <pre class="brush: java">
  * &#064;Bean
  * public PrefixKeyDynamoDBMapper dynamoDBMapper(AmazonDynamoDB amazonDynamoDB) {
  *     return new PrefixKeyDynamoDBMapper(amazonDynamoDB, new DynamoDBMapper(amazonDynamoDB));
  * }
  * </pre>
- * </p>
+ *
  * @author normandesjr
  */
 public class PrefixKeyDynamoDBMapper extends DynamoDBMapperDecorator {
