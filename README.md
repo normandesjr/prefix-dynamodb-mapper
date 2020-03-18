@@ -49,17 +49,17 @@ If you check at database you'll see the value "PRODUCT_AAA111" as the value of "
 If your version is a release version (does not end in -SNAPSHOT):
 
 ````
-mvn clean deploy
+./mvnw clean deploy
 ````
 
 Set the property autoReleaseAfterClose to false to be able manually inspect the staging repository and trigger a release of the staging repository later with:
 
 ````
-mvn nexus-staging:release
+./mvnw nexus-staging:release
 ````
 
 If you find something went wrong you can drop the staging repository with:
 
 ````
-mvn nexus-staging:drop
+./mvnw nexus-staging:drop
 ````
