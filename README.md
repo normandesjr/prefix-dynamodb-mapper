@@ -10,6 +10,16 @@ The goal of this project is to keep this task as simple as possible, using annot
 
 ### Configuration
 
+The lib is released at Maven Central, so you can just add the dependency at your pom.xml
+
+````xml
+<dependency>
+	<groupId>io.github.normandesjr</groupId>
+	<artifactId>prefix-dynamodb-mapper</artifactId>
+	<version>0.1.0</version>
+</dependency>
+````
+
 We will decorate the original _DynamoDBMapper_ with the _PrefixKeyDynamoDBMapper_ as follow:
 
 ````java
