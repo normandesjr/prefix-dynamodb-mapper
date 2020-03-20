@@ -1,5 +1,6 @@
 package io.github.normandesjr.decorator.model;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import io.github.normandesjr.annotation.DynamoDBPrefix;
 
 public class FieldWithShortNameObject {
@@ -13,6 +14,7 @@ public class FieldWithShortNameObject {
     }
 
     @DynamoDBPrefix(A_PREFIX)
+    @DynamoDBHashKey
     public String getA() {
         return a;
     }

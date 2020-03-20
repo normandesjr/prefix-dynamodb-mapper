@@ -42,7 +42,30 @@ dynamoDBMapper.save(product)
 
 If you check at database you'll see the value "PRODUCT_AAA111" as the value of "pk" data.
 
+### Loading
+
+There are a big difference when use _load_, because we need the hash and optionally range key.
+
+It is mandatory to use @DynamoDBHashKey and @DynamoDBRangeKey to use DynamoDBMapper.load(Class<T> clazz, Object hashKey, Object rangeKey).
+
+````java
+Product product = dynamoDBMapper.load(Product.class, "AAA1111", "MacBook Pro");
+````
+
+Supposing you have hashKey with PROD_ prefix and rangeKey with "PROD_NAME_ prefix with @DynamoDBPrefix annotation
+You will get the returned product without these prefixes.
+
 ## Developers
+
+### Check quality
+
+There is a docker-compose.yml to start a sonarqube.
+
+````
+./mvnw clean install sonar:sonar
+````
+
+Check at localhost:9000 the report.
 
 ### Release
 
@@ -52,14 +75,3 @@ If your version is a release version (does not end in -SNAPSHOT):
 ./mvnw clean deploy
 ````
 
-Set the property autoReleaseAfterClose to false to be able manually inspect the staging repository and trigger a release of the staging repository later with:
-
-````
-./mvnw nexus-staging:release
-````
-
-If you find something went wrong you can drop the staging repository with:
-
-````
-./mvnw nexus-staging:drop
-````

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class PrefixKeyDynamoDBMapperTest {
+public class PrefixKeyDynamoDBMapperSaverTest {
 
     @Mock
     private DynamoDBMapper dynamoDBMapper;
@@ -105,5 +105,6 @@ public class PrefixKeyDynamoDBMapperTest {
 
         assertThrows(IllegalAccessException.class, () -> prefixKeyDynamoDBMapper.save(privateSetObject));
     }
+
 
 }
