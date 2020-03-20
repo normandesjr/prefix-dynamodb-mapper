@@ -2,13 +2,15 @@
 
 ## Motivation
 
-It is a best practise to add some prefix string to data save in DynamoDB.
+Sometimes you need to add some prefixes to attributes when using DynamoDB.
 
-So, the goal of this project is to keep this task as simple as possible, using annotation.
+The goal of this project is to keep this task as simple as possible, using annotations.
 
 ## How to use it
 
 ### Configuration
+
+We will decorate the original _DynamoDBMapper_ with the _PrefixKeyDynamoDBMapper_ as follow:
 
 ````java
 @Bean
@@ -19,7 +21,7 @@ public PrefixKeyDynamoDBMapper dynamoDBMapper(AmazonDynamoDB amazonDynamoDB) {
 
 ### Annotation
 
-On a get method add the @DynamoDBPrefix with the prefix, as the following code:
+On a get method add the _@DynamoDBPrefix_ with the prefix, as the following code:
 
 ````java
 @DynamoDBPrefix("PRODUCT_")
@@ -29,11 +31,11 @@ public String getSku() {
 }
 ````
 
-It only works on getters methods, otherwise it will be ignored.
+Attention, it only works on getters methods and it's mandatory to have the setter method too.
 
 ### Saving
 
-Create the object that you would like to save and using the Decorator PrefixKeyDynamoDBMapper the prefix will be added for you.
+Create the object that you would like to save and using the decorator _PrefixKeyDynamoDBMapper_ the prefix will be added for you.
 
 ````java
 Product product = new Product("AAA111");
@@ -44,16 +46,13 @@ If you check at database you'll see the value "PRODUCT_AAA111" as the value of "
 
 ### Loading
 
-There are a big difference when use _load_, because we need the hash and optionally range key.
-
-It is mandatory to use @DynamoDBHashKey and @DynamoDBRangeKey to use DynamoDBMapper.load(Class<T> clazz, Object hashKey, Object rangeKey).
+It's mandatory to use @DynamoDBHashKey and @DynamoDBRangeKey with DynamoDBMapper.load(Class<T> clazz, Object hashKey, Object rangeKey).
 
 ````java
 Product product = dynamoDBMapper.load(Product.class, "AAA1111", "MacBook Pro");
 ````
 
-Supposing you have hashKey with PROD_ prefix and rangeKey with "PROD_NAME_ prefix with @DynamoDBPrefix annotation
-You will get the returned product without these prefixes.
+Supposing you have hashKey with PROD_ prefix and rangeKey with "PROD_NAME_ prefix the returned product will not have these prefixes.
 
 ## Developers
 
@@ -74,4 +73,3 @@ If your version is a release version (does not end in -SNAPSHOT):
 ````
 ./mvnw clean deploy
 ````
-
