@@ -50,4 +50,16 @@ public class PrefixKeyDynamoDBMapperLoaderTest {
         assertEquals("name", loadedWithManyPrefixObject.getName());
     }
 
+    @Test
+    public void should_return_null_if_not_found() {
+        when(dynamoDBMapper.load(
+                WithManyPrefixObject.class, WithManyPrefixObject.ID_PREFIX.concat("id"), WithManyPrefixObject.NAME_PREFIX.concat("name")))
+                .thenReturn(null);
+
+        WithManyPrefixObject loadedWithManyPrefixObject = prefixKeyDynamoDBMapper
+                .load(WithManyPrefixObject.class, "id", "name");
+
+        assertEquals(null, loadedWithManyPrefixObject);
+    }
+
 }

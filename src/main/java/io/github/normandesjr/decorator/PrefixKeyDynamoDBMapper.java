@@ -69,8 +69,10 @@ public class PrefixKeyDynamoDBMapper extends DynamoDBMapperDecorator {
 
         T loadedObject = decoratedDynamoDBMapper.load(clazz, hashKeyWithPrefix, rangeKeyWithPrefix);
 
-        Optional.of(hashKeyMethod).ifPresent(setOriginalValue(loadedObject, hashKey, hashKeyMethod));
-        Optional.of(rangeKeyMethod).ifPresent(setOriginalValue(loadedObject, rangeKey, rangeKeyMethod));
+        if (loadedObject != null) {
+            Optional.of(hashKeyMethod).ifPresent(setOriginalValue(loadedObject, hashKey, hashKeyMethod));
+            Optional.of(rangeKeyMethod).ifPresent(setOriginalValue(loadedObject, rangeKey, rangeKeyMethod));
+        }
 
         return loadedObject;
     }
